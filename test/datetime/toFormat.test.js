@@ -619,3 +619,12 @@ test("DateTime#toFormat('X') returns a Unix timestamp in seconds", () => {
 test("DateTime#toFormat('x') returns a Unix timestamp in milliseconds", () => {
   expect(dt.toFormat("x")).toBe("391166634123");
 });
+
+//------
+// #parseFormat()
+//------
+
+test("DateTime#parseFormat can be used to parse a format", () => {
+  const parsed = DateTime.parseFormat("MM/dd/yyyy");
+  expect(dt.toFormat(parsed)).toBe("05/25/1982");
+});

@@ -609,9 +609,7 @@ export default class DateTime {
     // make sure the values we have are in range
     const higherOrderInvalid = useWeekData
         ? hasInvalidWeekData(normalized)
-        : containsOrdinal
-          ? hasInvalidOrdinalData(normalized)
-          : hasInvalidGregorianData(normalized),
+        : containsOrdinal ? hasInvalidOrdinalData(normalized) : hasInvalidGregorianData(normalized),
       invalid = higherOrderInvalid || hasInvalidTimeData(normalized);
 
     if (invalid) {
@@ -621,9 +619,7 @@ export default class DateTime {
     // compute the actual time
     const gregorian = useWeekData
         ? weekToGregorian(normalized)
-        : containsOrdinal
-          ? ordinalToGregorian(normalized)
-          : normalized,
+        : containsOrdinal ? ordinalToGregorian(normalized) : normalized,
       [tsFinal, offsetFinal] = objToTS(gregorian, offsetProvis, zoneToUse),
       inst = new DateTime({
         ts: tsFinal,
@@ -736,6 +732,10 @@ export default class DateTime {
    */
   static fromString(text, fmt, opts = {}) {
     return DateTime.fromFormat(text, fmt, opts);
+  }
+
+  static parseFormat(fmt) {
+    return Formatter.parseFormat(fmt);
   }
 
   /**

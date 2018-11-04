@@ -6,6 +6,7 @@ import DateTime from "../src/datetime";
 const suite = new Benchmark.Suite();
 
 const dt = DateTime.local();
+const parsedFormat = DateTime.parseFormat("yyyy-MM-dd");
 
 suite
   .add("DateTime.local", () => {
@@ -30,6 +31,9 @@ suite
   })
   .add("DateTime#toFormat", () => {
     dt.toFormat("yyyy-MM-dd");
+  })
+  .add("DateTime#toFormat with preparse", () => {
+    dt.toFormat(parsedFormat);
   })
   .add("DateTime#add", () => {
     dt.plus({ milliseconds: 3434 });

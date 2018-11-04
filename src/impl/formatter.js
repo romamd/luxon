@@ -48,6 +48,10 @@ export default class Formatter {
   }
 
   static parseFormat(fmt) {
+    if (fmt instanceof Array) {
+      return fmt;
+    }
+
     let current = null,
       currentFull = "",
       bracketed = false;
