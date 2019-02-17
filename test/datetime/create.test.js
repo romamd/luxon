@@ -97,18 +97,24 @@ test("DateTime.local accepts the default locale", () => {
 });
 
 test("DateTime.local accepts the default numbering system", () => {
-  withDefaultNumberingSystem("beng", () => expect(DateTime.local().numberingSystem).toBe("beng"));
+  withDefaultNumberingSystem("beng", () =>
+    expect(DateTime.local().numberingSystem).toBe("beng")
+  );
 });
 
 test("DateTime.local accepts the default output calendar", () => {
-  withDefaultOutputCalendar("hebrew", () => expect(DateTime.local().outputCalendar).toBe("hebrew"));
+  withDefaultOutputCalendar("hebrew", () =>
+    expect(DateTime.local().outputCalendar).toBe("hebrew")
+  );
 });
 
 //------
 // #toLocal()
 //-------
 test("DateTime#toLocal accepts the default locale", () => {
-  Helpers.withDefaultZone("UTC", () => expect(DateTime.local().zoneName).toBe("UTC"));
+  Helpers.withDefaultZone("UTC", () =>
+    expect(DateTime.local().zoneName).toBe("UTC")
+  );
 });
 
 //------
@@ -227,7 +233,9 @@ test("DateTime.fromJSDate(date) returns invalid for invalid values", () => {
 });
 
 test("DateTime.fromJSDate accepts the default locale", () => {
-  withDefaultLocale("fr", () => expect(DateTime.fromJSDate(new Date()).locale).toBe("fr"));
+  withDefaultLocale("fr", () =>
+    expect(DateTime.fromJSDate(new Date()).locale).toBe("fr")
+  );
 });
 
 //------
@@ -249,7 +257,9 @@ test("DateTime.fromMillis(ms) accepts a zone option", () => {
 });
 
 test("DateTime.fromMillis accepts the default locale", () => {
-  withDefaultLocale("fr", () => expect(DateTime.fromMillis(391147200000).locale).toBe("fr"));
+  withDefaultLocale("fr", () =>
+    expect(DateTime.fromMillis(391147200000).locale).toBe("fr")
+  );
 });
 
 test("DateTime.fromMillis(ms) throws InvalidArgumentError for non-numeric input", () => {
@@ -275,7 +285,9 @@ test("DateTime.fromSeconds(ms) accepts a zone option", () => {
 });
 
 test("DateTime.fromSeconds accepts the default locale", () => {
-  withDefaultLocale("fr", () => expect(DateTime.fromSeconds(391147200).locale).toBe("fr"));
+  withDefaultLocale("fr", () =>
+    expect(DateTime.fromSeconds(391147200).locale).toBe("fr")
+  );
 });
 
 test("DateTime.fromSeconds(seconds) throws InvalidArgumentError for non-numeric input", () => {
@@ -309,7 +321,9 @@ test("DateTime.fromObject() sets all the fields", () => {
 });
 
 test('DateTime.fromObject() accepts a zone option of "utc"', () => {
-  const dateTime = DateTime.fromObject(Object.assign({}, baseObject, { zone: "utc" }));
+  const dateTime = DateTime.fromObject(
+    Object.assign({}, baseObject, { zone: "utc" })
+  );
 
   expect(dateTime.isOffsetFixed).toBe(true);
   expect(dateTime.year).toBe(1982);
@@ -322,7 +336,9 @@ test('DateTime.fromObject() accepts a zone option of "utc"', () => {
 });
 
 test('DateTime.fromObject() accepts "utc-8" as the zone option', () => {
-  const dateTime = DateTime.fromObject(Object.assign({}, baseObject, { zone: "utc-8" }));
+  const dateTime = DateTime.fromObject(
+    Object.assign({}, baseObject, { zone: "utc-8" })
+  );
 
   expect(dateTime.isOffsetFixed).toBe(true);
   expect(dateTime.offset).toBe(-8 * 60);
@@ -486,12 +502,18 @@ test("DateTime.fromObject() w/ordinal defaults to the current year", () => {
 });
 
 test("DateTime.fromObject() returns invalid for invalid values", () => {
-  expect(DateTime.fromObject({ weekYear: 2017, weekNumber: 54 }).isValid).toBe(false);
-  expect(DateTime.fromObject({ weekYear: 2017, weekNumber: 15, weekday: 0 }).isValid).toBe(false);
+  expect(DateTime.fromObject({ weekYear: 2017, weekNumber: 54 }).isValid).toBe(
+    false
+  );
+  expect(
+    DateTime.fromObject({ weekYear: 2017, weekNumber: 15, weekday: 0 }).isValid
+  ).toBe(false);
 });
 
 test("DateTime.fromObject accepts the default locale", () => {
-  withDefaultLocale("fr", () => expect(DateTime.fromObject({}).locale).toBe("fr"));
+  withDefaultLocale("fr", () =>
+    expect(DateTime.fromObject({}).locale).toBe("fr")
+  );
 });
 
 test("DateTime.fromObject accepts really low year numbers", () => {
@@ -542,7 +564,7 @@ test("DateTime.fromObject accepts a locale string with weird junk in it", () => 
     });
 
     expect(res.locale).toBe("be");
-    expect(res.outputCalendar).toBe("gregory");
+    expect(res.outputCalendar).toBe("coptic");
     expect(res.numberingSystem).toBe("latn");
   });
 });
